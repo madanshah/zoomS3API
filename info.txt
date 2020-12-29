@@ -1,0 +1,8 @@
+Pool ID
+us-east-1_jq7p3tyEK
+
+Pool ARN
+arn:aws:cognito-idp:us-east-1:031342435657:userpool/us-east-1_jq7p3tyEK
+
+App client
+3stdq8ji450g3s02jairo70iub

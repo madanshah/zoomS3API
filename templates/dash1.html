@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 4, from LayoutIt!</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  </head>
+  <body>
+    
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				User Management Dashboard
+			</h3> 
+			<button type="button" class="btn btn-success" onclick="/usercreate">
+				Create User
+			</button>
+			<table class="table" border="1">
+				<thead>
+					<tr>
+						<th id="id"> 
+							ID
+						</th>
+						<th id="fname">
+							First Name
+						</th>
+						<th id="lname">
+							Last Name
+						</th>
+						<th id="email">
+							Email
+                        </th>
+                        <th id="type">
+							Type
+                        </th>
+                        <th id="details">
+							Details
+                        </th>
+                        <th >
+                        <th id="delete">
+							Delete
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							1
+						</td>
+						
+                        <td>
+                            <button type="button" class="btn btn-success">
+                                Details
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success">
+                                Delete
+                            </button>
+                        </td>    
+					</tr>
+				</tbody>
+            </table>
+            <div>
+                <script type="text/javascript">
+                    var b = JSON.parse('{{ us | tojson | safe}}');
+                    for (let i = 0; i < b.length; i++) {                               
+                        var output = '';
+                        output += b[i].email;
+                        console.log(output);
+                                                                               
+                    }; 
+                    document.getElementById("email").innerHTML = output;                       
+                </script>
+            </div>  
+		</div>
+	</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

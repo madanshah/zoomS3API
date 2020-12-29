@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="userdetail" align="center">    
+            <form role="form" action="{{ url_for('login') }}" method="post">
+                <div class="form-group">
+                    <div class="form-group">
+                        <input type="submit" value="Login">
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        <div id="userdetail" align="center">    
+            <form role="form" action="{{ url_for('userdetail') }}" method="post">
+                <h3>
+                User Detail
+                </h3>
+                <div class="form-group">
+                    <div class="form-group">
+                             
+                        <label for="License">Choose Sub Account</label>
+
+                        <select id="subAccount" name="subAccount">
+                        <option value="1">Babin</option>
+                        <!-- <option value="2">Nitin</option> -->
+                        <option value="3">Genese</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id">
+                        Provide user ID
+                        </label>
+                        <input type="text" class="form-control" name="id" />
+                        <input type="submit" value="Details">
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        <br><br><br>
+        <div id="userdelete" align="center">
+            
+            <form role="form" action="{{ url_for('userdelete') }}" method="post">
+                <h3>
+                    Delete User
+                </h3>
+                <div class="form-group">
+                             
+                    <label for="License">Choose Sub Account</label>
+
+                        <select id="subAccount" name="subAccount">
+                        <option value="1">Babin</option>
+                        <!-- <option value="2">Nitin</option> -->
+                        <option value="3">Genese</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    
+                    <label for="id">
+                    Provide user ID
+                    </label>
+                    <input type="text" class="form-control" name="id" />
+                    <input type="submit" value="Delete">
+
+                </div>
+                
+            </form>
+        </div>
+        <br><br><br>
+        <div id="create" align="center">
+            <h3>
+                Create User
+            </h3>    
+            <form role="form" action="{{ url_for('userCreate') }}" method="post">
+                <input type="submit" value="Create">
+            </form>
+        </div><br><br><br><br>
+        <div id="responsecontainer" align="center">
+            <h3>User List<h/3>
+            <br>    
+            <div class="form-group">
+                <form role="form" action="{{ url_for('userlist') }}" method="post">
+                    <label for="License">Choose Sub Account</label>
+
+                    <select id="subAccount" name="subAccount">
+                    <option value="1">Babin</option>
+                    <!-- <option value="2">Nitin</option> -->
+                    <option value="3">Genese</option>
+                    </select>
+                    <button type="submit" value="submit">Get User List</button>
+                </form>             
+
+            </div>
+
+        </div>
+    </body>
+</html>

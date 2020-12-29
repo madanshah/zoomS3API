@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="userdetail" align="center">    
+            <form role="form" action="{{ url_for('userdetail') }}" method="post">
+                <h3>
+                User Detail
+                </h3>
+                <div class="form-group">
+                             
+                    <label for="License">Choose Sub Account</label>
+
+                    <select id="subAccount" name="subAccount">
+                    <option value="1">Babin</option>
+                    <!-- <option value="2">Nitin</option> -->
+                    <option value="3">Genese</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    
+                    <label for="id">
+                    Provide user ID
+                    </label>
+                    <input type="text" class="form-control" name="id" />
+                    <input type="submit" value="Details">
+                </div>
+                
+            </form>
+        </div>
+        <div id="userdelete" align="center">
+            
+            <form role="form" action="{{ url_for('userdelete') }}" method="post">
+                <h3>
+                    Delete User
+                </h3>
+                <div class="form-group">
+                             
+                    <label for="License">Choose Sub Account</label>
+
+                    <select id="subAccount" name="subAccount">
+                    <option value="1">Babin</option>
+                    <!-- <option value="2">Nitin</option> -->
+                    <option value="3">Genese</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    
+                    <label for="id">
+                    Provide user ID
+                    </label>
+                    <input type="text" class="form-control" name="id" />
+                    <input type="submit" value="Delete">
+
+                </div>
+            </form>
+        </div>
+        <div id="create" align="center">
+            <h3>
+                Create User
+            </h3>    
+            <form role="form" action="{{ url_for('userCreate') }}" method="post">
+                <input type="submit" value="Create">
+            </form>
+        </div><br>
+        <div id="responsecontainer" align="center">
+            <script>
+                var data = JSON.parse('{{ us | tojson | safe}}');
+                // var obj = JSON.parse(data);
+                var tableContent = "<table>";
+                tableContent += "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>License Type</th><th>Status</th></tr>";
+                if(data) {
+                    $.each( data, function( key, value ) {
+                        tableContent += '<tr>';
+                        tableContent += '<td>'+value.id+'</td>';
+                        tableContent += '<td>'+value.first_name+'</td>';
+                        tableContent += '<td>'+value.last_name+'</td>';
+                        tableContent += '<td>'+value.email+'</td>';
+                        tableContent += '<td>'+value.type+'</td>';
+                        tableContent += '<td>'+value.status+'</td>';
+                        tableContent += '</tr>';
+                    });
+                }
+                tableContent += "</table>";
+                $("#responsecontainer").html(tableContent);    
+            </script>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+      <form role="form" action="{{ url_for('userdelete') }}" method="post" style="float:left" align="center">
+        <h3>
+            Delete User
+        </h3>
+        <div class="form-group">
+            
+            <label for="id">
+            Provide user ID
+            </label>
+            <input type="text" class="form-control" name="id" />
+        </div>
+        <input type="submit" value="submit">
+      </form>
+		</div>
+		<div class="col-md-6">
+      <form role="form" action="{{ url_for('userdetail') }}" method="post" style="float:right" align="center">
+        <h3>
+        User Detail
+        </h3>
+        <div class="form-group">
+            
+            <label for="id">
+            Provide user ID
+            </label>
+            <input type="text" class="form-control" name="id" />
+        </div>
+        <input type="submit" value="submit">
+      </form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+      <script>
+        var data = JSON.parse('{{ us | tojson | safe}}');
+        // var obj = JSON.parse(data);
+        var tableContent = "<table>";
+        tableContent += "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>License Type</th><th>Details</th><th>Delete<th></tr>";
+        if(data) {
+            $.each( data, function( key, value ) {
+                tableContent += '<tr>';
+                tableContent += '<td>'+value.id+'</td>';
+                tableContent += '<td>'+value.first_name+'</td>';
+                tableContent += '<td>'+value.last_name+'</td>';
+                tableContent += '<td>'+value.email+'</td>';
+                tableContent += '<td>'+value.type+'</td>';
+                tableContent += '</tr>';
+            });
+        }
+        tableContent += "</table>";
+        $("#responsecontainer").html(tableContent);    
+    </script>
+		</div>
+	</div>
+</div>
