@@ -15,8 +15,15 @@ from flask_jwt_extended import (
 
 from keys import get_cognito_public_keys
 app = Flask(__name__)
-app.config.from_object("config")
-app.config["JWT_PUBLIC_KEY"] = RSAAlgorithm.from_jwk(get_cognito_public_keys())
+
+app.config['AWS_DEFAULT_REGION'] = 'us-east-1'
+app.config['AWS_COGNITO_DOMAIN'] = 'https://zooms3.auth.us-east-1.amazoncognito.com'
+app.config['AWS_COGNITO_USER_POOL_ID'] = 'us-east-1_jq7p3tyEK'
+app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = '3stdq8ji450g3s02jairo70iub'
+app.config['AWS_COGNITO_USER_POOL_CLIENT_SECRET'] = 'ik7ri7skh06oi4t2c8ilne82t3ajah40qba9t0127vi48gu894c'
+app.config['AWS_COGNITO_REDIRECT_URL'] = 'http://localhost/'
+# app.config.from_object("config")
+# app.config["JWT_PUBLIC_KEY"] = RSAAlgorithm.from_jwk(get_cognito_public_keys())
 
 
 # headers = {
@@ -59,7 +66,7 @@ def logged_in():
 def protected():
     verify_jwt_in_request_optional()
     if get_jwt_identity():
-        return render_template("secret.html")
+        return render_template("dash101.html")
     else:
         return redirect(aws_auth.get_sign_in_url())
 
