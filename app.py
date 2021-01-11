@@ -17,11 +17,11 @@ from keys import get_cognito_public_keys
 app = Flask(__name__)
 
 app.config['AWS_DEFAULT_REGION'] = 'us-east-1'
-app.config['AWS_COGNITO_DOMAIN'] = 'https://zooms3.auth.us-east-1.amazoncognito.com'
-app.config['AWS_COGNITO_USER_POOL_ID'] = 'us-east-1_jq7p3tyEK'
-app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = '3stdq8ji450g3s02jairo70iub'
-app.config['AWS_COGNITO_USER_POOL_CLIENT_SECRET'] = 'ik7ri7skh06oi4t2c8ilne82t3ajah40qba9t0127vi48gu894c'
-app.config['AWS_COGNITO_REDIRECT_URL'] = 'http://localhost/'
+app.config['AWS_COGNITO_DOMAIN'] = 'https://zoomgen.auth.us-east-1.amazoncognito.com'
+app.config['AWS_COGNITO_USER_POOL_ID'] = 'us-east-1_sO8CrQWs6'
+app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = '44slta8t38k6knu0haqsbr4269'
+app.config['AWS_COGNITO_USER_POOL_CLIENT_SECRET'] = 'o7dbt4quoh2s26f8jm4tgg29ojioc21iadie04kqud81qihip5q'
+app.config['AWS_COGNITO_REDIRECT_URL'] = 'https://google.com'
 # app.config.from_object("config")
 # app.config["JWT_PUBLIC_KEY"] = RSAAlgorithm.from_jwk(get_cognito_public_keys())
 
