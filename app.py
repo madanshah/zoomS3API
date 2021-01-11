@@ -16,24 +16,24 @@ from flask_jwt_extended import (
 from keys import get_cognito_public_keys
 app = Flask(__name__)
 
-app.config['AWS_DEFAULT_REGION'] = 'us-east-1'
-app.config['AWS_COGNITO_DOMAIN'] = 'https://zoomgen.auth.us-east-1.amazoncognito.com'
-app.config['AWS_COGNITO_USER_POOL_ID'] = 'us-east-1_sO8CrQWs6'
-app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = '44slta8t38k6knu0haqsbr4269'
-app.config['AWS_COGNITO_USER_POOL_CLIENT_SECRET'] = 'o7dbt4quoh2s26f8jm4tgg29ojioc21iadie04kqud81qihip5q'
+app.config['AWS_DEFAULT_REGION'] = 'ap-south-1'
+app.config['AWS_COGNITO_DOMAIN'] = 'https://zoomgen.auth.ap-south-1.amazoncognito.com'
+app.config['AWS_COGNITO_USER_POOL_ID'] = 'ap-south-1_BFhjykrwo'
+app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = '6okk33v052l441t7794dioklal'
+app.config['AWS_COGNITO_USER_POOL_CLIENT_SECRET'] = '1pnsta7dqpadrjsa4d7g20rvdok8v4d4bf45m3d43lfs0c559up7'
 app.config['AWS_COGNITO_REDIRECT_URL'] = 'https://google.com'
 # app.config.from_object("config")
 # app.config["JWT_PUBLIC_KEY"] = RSAAlgorithm.from_jwk(get_cognito_public_keys())
 
 
-# headers = {
-#     'content-type': "application/json",
-#     # For main account
-#     # 'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2Mzk3MjM1NjAsImlhdCI6MTYwNzU4MjgxNn0.zf0B_XNGKlPxcll02w85T9P-s94PQb-1JLSfStHZRI4"
-#     # Babin accounts
-#     'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
+headers = {
+    'content-type': "application/json",
+    # For main account
+    # 'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2Mzk3MjM1NjAsImlhdCI6MTYwNzU4MjgxNn0.zf0B_XNGKlPxcll02w85T9P-s94PQb-1JLSfStHZRI4"
+    # Babin accounts
+    'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IjNDNkdpNmtiUnpXS1NMZktVMU56RXciLCJleHAiOjE2NDE4Mzg1MDAsImlhdCI6MTYxMDM0NTgxN30.RXOymitbE09WJiAN9JXZevMLysHjVc53jysCfv4iLwA"
 
-# }
+}
 # @app.route("/index")
 # def index():
 #     return render_template("dashboard.html")
@@ -73,30 +73,6 @@ def protected():
 
 @app.route("/userlist",methods=['POST'])
 def userlist():
-    sa = request.form['subAccount']
-    if sa == "1":
-        headers = {
-            'content-type': "application/json",
-            'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
-
-        }
-    # elif sa == "2":
-    #     headers = {
-    #         'content-type': "application/json",
-    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2MDg4ODk1MjcsImlhdCI6MTYwODI4NDcyNn0.pppNJoLZOGH7bZf8CLezPDkpzOTZM38-MieXTf3e83g"
-
-    #     }
-    else:
-        headers = {
-            'content-type': "application/json",
-            'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODMxNDAsImlhdCI6MTYwOTE0MTg2NX0.iJ7MUvwBVv_5ACHOddTDFFmHJ00A3le968k14rXIjwE"
-
-        }
-    # else:
-    #     headers={
-    #         'content-type': "application/json",
-    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
-    #     }        
     url = "https://api.zoom.us/v2/users"
     querystring = {"page_size":"100","status":"active"}
     response = requests.get(url, headers=headers, params=querystring)
@@ -113,30 +89,30 @@ def userCreate():
 
 @app.route("/create",methods=['POST'])
 def Create():
-    sa = request.form['subAccount']
-    if sa == "1":
-        headers = {
-            'content-type': "application/json",
-            'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
-
-        }
-    # elif sa == "2":
+    # sa = request.form['subAccount']
+    # if sa == "1":
     #     headers = {
     #         'content-type': "application/json",
-    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2MDg4ODk1MjcsImlhdCI6MTYwODI4NDcyNn0.pppNJoLZOGH7bZf8CLezPDkpzOTZM38-MieXTf3e83g"
+    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
 
     #     }
-    else:
-        headers = {
-            'content-type': "application/json",
-            'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODMxNDAsImlhdCI6MTYwOTE0MTg2NX0.iJ7MUvwBVv_5ACHOddTDFFmHJ00A3le968k14rXIjwE"
+    # # elif sa == "2":
+    # #     headers = {
+    # #         'content-type': "application/json",
+    # #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2MDg4ODk1MjcsImlhdCI6MTYwODI4NDcyNn0.pppNJoLZOGH7bZf8CLezPDkpzOTZM38-MieXTf3e83g"
 
-        }
+    # #     }
     # else:
-    #     headers={
+    #     headers = {
     #         'content-type': "application/json",
-    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
-    #     }        
+    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODMxNDAsImlhdCI6MTYwOTE0MTg2NX0.iJ7MUvwBVv_5ACHOddTDFFmHJ00A3le968k14rXIjwE"
+
+    #     }
+    # # else:
+    # #     headers={
+    # #         'content-type': "application/json",
+    # #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
+    # #     }        
     email = request.form['email']
     firstName = request.form['firstName']
     lastName = request.form['lastName']
@@ -151,30 +127,6 @@ def Create():
 
 @app.route("/userdetail",methods=['POST'])
 def userdetail():
-    sa = request.form['subAccount']
-    if sa == "1":
-        headers = {
-            'content-type': "application/json",
-            'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
-
-        }
-    # elif sa == "2":
-    #     headers = {
-    #         'content-type': "application/json",
-    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2MDg4ODk1MjcsImlhdCI6MTYwODI4NDcyNn0.pppNJoLZOGH7bZf8CLezPDkpzOTZM38-MieXTf3e83g"
-
-    #     }
-    else:
-        headers = {
-            'content-type': "application/json",
-            'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODMxNDAsImlhdCI6MTYwOTE0MTg2NX0.iJ7MUvwBVv_5ACHOddTDFFmHJ00A3le968k14rXIjwE"
-
-        }
-    # else:
-    #     headers={
-    #         'content-type': "application/json",
-    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
-    #     }        
     id = request.form['id']
     url = "https://api.zoom.us/v2/users/{}".format(id)
     querystring = {"page_size":"30","status":"active"}
@@ -184,30 +136,6 @@ def userdetail():
 
 @app.route("/userdelete",methods=['POST'])
 def userdelete():
-    sa = request.form['subAccount']
-    if sa == "1":
-        headers = {
-            'content-type': "application/json",
-            'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
-
-        }
-    # elif sa == "2":
-    #     headers = {
-    #         'content-type': "application/json",
-    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2MDg4ODk1MjcsImlhdCI6MTYwODI4NDcyNn0.pppNJoLZOGH7bZf8CLezPDkpzOTZM38-MieXTf3e83g"
-
-    #     }
-    else:
-        headers = {
-            'content-type': "application/json",
-            'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODMxNDAsImlhdCI6MTYwOTE0MTg2NX0.iJ7MUvwBVv_5ACHOddTDFFmHJ00A3le968k14rXIjwE"
-
-        }
-    # else:
-    #     headers={
-    #         'content-type': "application/json",
-    #         'authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IngzY2U5OTF4VERtNWZlazZ6dWIxdVEiLCJleHAiOjE2NDA2ODM0NDAsImlhdCI6MTYwOTE0MjA1NX0.Ya_nthCN1sN7RvxRT1VH0sf6GpkxNQux6sYkYA-NWYM"
-    #     }        
     id = request.form['id']
     url = "https://api.zoom.us/v2/users/{}".format(id)
     querystring = {"action":"disassociate"}
