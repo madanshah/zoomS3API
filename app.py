@@ -75,26 +75,30 @@ def login():
     
 @app.route("/check", methods=["POST"])
 def check():
-    email = request.form['email']
-    # userName = request.form['userName']
-    password = request.form['password']
-
-    table = dynamodb.Table('zoomUser')
-    response = table.query(KeyConditionExpression=Key('email').eq(email))
-    print(response)
-    if response['Count'] == 1:
-        items = response['Items']
-        # print(items)
-
-        name = items[0]['userName']
-        session['uname'] = name
-        if password == items[0]['password']:
-            return render_template("dash101.html", name=name)
-        flash("incorrect user or password","warning")
-        return render_template("login.html")
+    if 'uname' in session:
+        user = session['uname']
+        return render_template("dash101.html", user=user) 
     else:
-        flash("incorrect user or password","warning")
-        return render_template("login.html")
+        email = request.form['email']
+        # userName = request.form['userName']
+        password = request.form['password']
+
+        table = dynamodb.Table('zoomUser')
+        response = table.query(KeyConditionExpression=Key('email').eq(email))
+        print(response)
+        if response['Count'] == 1:
+            items = response['Items']
+            # print(items)
+
+            name = items[0]['userName']
+            session['uname'] = name
+            if password == items[0]['password']:
+                return render_template("dash101.html", name=name)
+            flash("incorrect user or password","warning")
+            return render_template("login.html")
+        else:
+            flash("incorrect user or password","warning")
+            return render_template("login.html")
 
 # @app.route("/loggedin", methods=["GET"])
 # def logged_in():
@@ -129,7 +133,8 @@ def userlist():
 
 @app.route("/usercreate",methods=['POST'])
 def userCreate():
-    return render_template("usercreate.html",)
+    issuedby = session['uname']
+    return render_template("usercreate.html",issuedby=issuedby)
 
 @app.route("/create",methods=['POST'])
 def Create():
@@ -185,7 +190,8 @@ def Create():
             'Issued_By' : issuedby,
             'Participants' : type,
             'ZoomID' : data['id'],
-            'SubAccount' : 'Zoom1'
+            'SubAccount' : 'Zoom1',
+            'LicenseType' : 'Licensed'
         }
     )
 
@@ -198,7 +204,7 @@ def Create():
 def userdetail():
     id = request.form['id']
     url = "https://api.zoom.us/v2/users/{}".format(id)
-    querystring = {"page_size":"30","status":"active"}
+    querystring = {"page_size":"30","status":"pending"}
     response = requests.get(url, headers=headers, params=querystring)
     userdetail = response.content
     return render_template("userdetail.html", userdetail=userdetail)
