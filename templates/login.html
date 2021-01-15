@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <!-- import #zmmtg-root css -->
+        <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.3/css/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.3/css/react-select.css" />
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for msg in messages %}
+                            <h2>{{msg}}</h2>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>
+                        Create User
+                    </h3>
+                    <form role="form" action="{{ url_for('check') }}" method="post">
+                        <div class="form-group">
+                             
+                            <label for="Email">
+                                Email address
+                            </label>
+                            <input type="email" class="form-control" name="email" />
+                        </div>
+                        <!-- <div class="form-group">
+                             
+                            <label for="FirstName">
+                                User Name
+                            </label>
+                            <input type="First Name" class="form-control" name="userName" />
+                        </div> -->
+                        <div class="form-group">
+                             
+                            <label for="LastName">
+                                Password
+                            </label>
+                            <input type="password" class="form-control" name="password" />
+                        </div>
+                        <div class="form-group">
+                             
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

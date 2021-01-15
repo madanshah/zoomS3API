@@ -4,6 +4,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     </head>
     <body>
+        <div><h1>{{ user }}</h1></div>
         <div id="userdetail" align="center">    
             <form role="form" action="{{ url_for('login') }}" method="post">
                 <div class="form-group">
@@ -97,6 +98,17 @@
 
             </div>
 
+        </div>
+        <div id="logout" align="center">    
+            <form role="form" action="{{ url_for('logout') }}" method="post">
+                <div class="form-group">
+                    <h3>logout</h3>
+                    <div class="form-group">
+                        <input type="submit" value="Logout">
+                    </div>
+                </div>
+                
+            </form>
         </div>
     </body>
 </html>
